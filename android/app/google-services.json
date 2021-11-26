@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "69518154875",
+    "project_id": "fir-flutter-codelab-5542f",
+    "storage_bucket": "fir-flutter-codelab-5542f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:69518154875:android:2d8ede16d2b3ad6c80d6de",
+        "android_client_info": {
+          "package_name": "com.example.gtk_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "69518154875-7p5mfgjqs1eg59f6d4p5qo0dsd9ci9de.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtHm0Vo6G0YIoZ-u9Q-NbevL32e-cUGDo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "69518154875-7p5mfgjqs1eg59f6d4p5qo0dsd9ci9de.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "69518154875-cg6uc7mrpqncf4lt7j74qhb7dqr7deni.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.lorenzo.meetup"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
