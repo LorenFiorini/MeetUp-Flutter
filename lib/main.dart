@@ -8,7 +8,12 @@ import 'src/authentication.dart';
 import 'src/widgets.dart';
 
 void main() {
-  runApp(App());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ApplicationState(),
+      builder: (context, _) => App(),
+    ),
+  );
 }
 
 class App extends StatelessWidget {
@@ -46,6 +51,18 @@ class HomePage extends StatelessWidget {
           const SizedBox(height: 8),
           const IconAndDetail(Icons.calendar_today, 'October 30'),
           const IconAndDetail(Icons.location_city, 'San Francisco'),
+          Consumer<ApplicationState>(
+            builder: (context, appState, _) => Authentication(
+              email: appState.email,
+              loginState: appState.loginState,
+              startLoginFlow: appState.startLoginFlow,
+              verifyEmail: appState.verifyEmail,
+              signInWithEmailAndPassword: appState.signInWithEmailAndPassword,
+              cancelRegistration: appState.cancelRegistration,
+              registerAccount: appState.registerAccount,
+              signOut: appState.signOut,
+            ),
+          ),
           const Divider(
             height: 8,
             thickness: 1,
