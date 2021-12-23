@@ -36,16 +36,23 @@ class App extends StatelessWidget {
   }
 }
 
+
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
+    var screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Firebase Meetup'),
       ),
       body: ListView(
+        padding: EdgeInsets.only(
+          left: screenWidth * 0.1,
+          right: screenWidth * 0.1,
+          bottom: screenWidth * 0.1,
+        ),
         children: <Widget>[
           Image.asset('assets/codelab.png'),
           const SizedBox(height: 8),
@@ -78,6 +85,7 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+
 }
 
 
