@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
+import 'firebase_options.dart';
 import 'src/authentication.dart';
 import 'src/widgets.dart';
 
@@ -88,14 +89,15 @@ class HomePage extends StatelessWidget {
 
 }
 
-
 class ApplicationState extends ChangeNotifier {
   ApplicationState() {
     init();
   }
 
   Future<void> init() async {
-    await Firebase.initializeApp();
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
 
     FirebaseAuth.instance.userChanges().listen((user) {
       if (user != null) {
@@ -118,7 +120,7 @@ class ApplicationState extends ChangeNotifier {
     notifyListeners();
   }
 
-  void verifyEmail(
+  Future<void> verifyEmail(
       String email,
       void Function(FirebaseAuthException e) errorCallback,
       ) async {
@@ -137,7 +139,7 @@ class ApplicationState extends ChangeNotifier {
     }
   }
 
-  void signInWithEmailAndPassword(
+  Future<void> signInWithEmailAndPassword(
       String email,
       String password,
       void Function(FirebaseAuthException e) errorCallback,
@@ -157,12 +159,15 @@ class ApplicationState extends ChangeNotifier {
     notifyListeners();
   }
 
-  void registerAccount(String email, String displayName, String password,
+  Future<void> registerAccount(
+      String email,
+      String displayName,
+      String password,
       void Function(FirebaseAuthException e) errorCallback) async {
     try {
       var credential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
-      await credential.user!.updateProfile(displayName: displayName);
+      await credential.user!.updateDisplayName(displayName);
     } on FirebaseAuthException catch (e) {
       errorCallback(e);
     }
@@ -172,5 +177,3 @@ class ApplicationState extends ChangeNotifier {
     FirebaseAuth.instance.signOut();
   }
 }
-
-
